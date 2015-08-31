@@ -8,7 +8,8 @@ class ViewDisplay extends React.Component {
 		this.styles = {
 			wrapper: 'view-display',
 			blockTitle: 'view-display-block-title xfont',
-
+			itemButton: 'item-set-button-block',
+			itemCount: 'item-set-button-block-count',
 		}
 	}
 
@@ -16,8 +17,10 @@ class ViewDisplay extends React.Component {
 		return items.map((item, idx) => {
 			return (
 				<div key={item.id + '-' + idx}>
-					<ItemButton itemId={item.id} />
-					<span>{item.count}</span>
+					<div className={this.styles.itemButton}>
+						<ItemButton itemId={item.id} />
+						<span className={this.styles.itemCount}>{item.count}</span>
+					</div>
 				</div>
 			);
 		});
@@ -29,7 +32,7 @@ class ViewDisplay extends React.Component {
 				<div key={idx}>
 					<span className={this.styles.blockTitle}>-- {block.type}</span>
 
-					<div>
+					<div className='row'>
 						{this.renderBlockItems(block.items)}
 					</div>
 				</div>
@@ -40,7 +43,9 @@ class ViewDisplay extends React.Component {
 	render() {
 		return (
 			<div className={'row ' + this.styles.wrapper}>
+				<div className='col-xs-12 col-sm-12 col-md-12'>
 				{this.renderBlocks()}
+				</div>
 			</div>
 		);
 	}

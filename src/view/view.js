@@ -54,11 +54,15 @@ class View extends React.Component {
 				<Download show={this.state.app.showDownload} data={this.state.itemset} id={this.state.id} />
 				<Info show={this.state.app.showInfo} />
 
+					<div className='row'>
+						<h2 className='xfont-thin'>{this.state.itemset.title}</h2>
+					</div>
+					<hr />
 
 				<div className='col-xs-5 col-sm-5 col-md-5'>
 					<ViewDisplay itemset={this.state.itemset} />
 				</div>
-				<div className='col-xs-5 col-sm-5 col-md-5'>
+				<div className='col-xs-5 col-sm-5 col-md-5 col-xs-offset-1 col-sm-offset-1 col-md-offset-1'>
 					<ViewBuild apiVersion={this.props.apiVersion} data={this.state} />
 				</div>
 

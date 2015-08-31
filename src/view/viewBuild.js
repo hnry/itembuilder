@@ -4,7 +4,7 @@ class ViewBuild extends React.Component {
 		super();
 
 		this.styles = {
-
+			imageChampion: 'item-champion-image',
 		}
 	}
 
@@ -12,16 +12,25 @@ class ViewBuild extends React.Component {
 		if (!this.props.data.champion.riotKey) {
 			return null;
 		}
-		return (<img src={'http://ddragon.leagueoflegends.com/cdn/' + this.props.apiVersion + '/img/champion/' + this.props.data.champion.riotKey + '.png'} />);
+		return (<img className={this.styles.imageChampion} src={'http://ddragon.leagueoflegends.com/cdn/' + this.props.apiVersion + '/img/champion/' + this.props.data.champion.riotKey + '.png'} />);
 	}
 
 	render() {
 		return (
 			<div>
-					{this.props.data.itemset.title}
-					<br />
-					{this.renderChampionImage()}
-					{this.props.data.champion.name}
+					
+
+
+					<div className='row'>
+						<div className=''>
+							{this.renderChampionImage()}
+						</div>
+						<div className=''>
+							<h3 className='xfont'>{this.props.data.champion.name}</h3>
+							<br />
+							{this.props.data.champion.title}
+						</div>
+					</div>
 					<br />
 					<br />
 					map info
