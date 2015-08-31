@@ -101,7 +101,6 @@ class ItemSetStore extends DataStore {
 				this._emitChange();
 				break;
 			case 'add_itemset_item':
-				console.log('dispatch')
 				this._data.itemset.blocks[payload.idx].items.push({
 					id: parseInt(payload.itemID),
 					count: 1
