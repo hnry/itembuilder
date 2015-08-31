@@ -51,6 +51,7 @@ class ChampionSelect extends React.Component {
 
 			if (champ.length) {
 				this.onChampionSelect(champ[0]);
+				this.setState({ searchValue: '', showDropDown: false });
 			}
 		}
 	}

@@ -34,6 +34,16 @@ var App = React.createClass({
 
 	mixins: [Router.State],
 
+	/*
+		This is only for being on /create and click /create
+		or / and clicking /
+
+		we do a state reset to reset the editor
+	 */
+	_onNavCreate: function(e) {
+		appDispatcher.dispatch(APP_ACTIONS.reset_all());
+	},
+
 	_onNavSave: function(e) {
 		appDispatcher.dispatch(APP_ACTIONS.save_itemset());
 		return false;
@@ -87,6 +97,10 @@ var App = React.createClass({
 		let mode = createLinks;
 		if (this.isActive('view')) {
 			mode = viewLinks;
+		}
+
+		if (this.isActive('create')) {
+			createLinks[0].onClick = this._onNavCreate;
 		}
 
 		return mode.map(link => {
