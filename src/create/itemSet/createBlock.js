@@ -1,5 +1,3 @@
-var dragula = require('react-dragula');
-
 class CreateBlock extends React.Component {
 
 	constructor() {
