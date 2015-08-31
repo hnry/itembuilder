@@ -23,8 +23,7 @@ Requirements:
 - Postgresql database server ( 9.4+ )
 - Node.js (or io.js) and npm
 
-1) After cloning the respository, setup `settings.json`, the entries should be obvious, it is for setting up the postgresql database, and riot api key.
-
+1. After cloning the respository, setup `settings.json`, the entries should be obvious, it is for setting up the postgresql database, and riot api key.
 2. Run `node script/initDB.js` to setup and prefill the database.
 3. Run `node build.js deploy` to build all the javascript src files.
 4. Finally run `NODE_ENV=production node index.js` and point your browser to `http://localhost:3000`
