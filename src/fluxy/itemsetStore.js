@@ -4,49 +4,7 @@ class ItemSetStore extends DataStore {
 	}
 
 	getInitialState() {
-		return {
-			id: 0,
-			loadStatus: '',
-			saveStatus: '',
-			showFileUpload: 1,
-			champion: {},
-			description: '',
-
-			itemset: {
-			title: 'The name of the page',
-			type: 'custom',
-			map: 'any',
-			mode: 'any',
-			priority: false,
-			sortrank: 0,
-// * blocks are limited to 20 items *
-// soft cap blocks to 50 blocks, not a league limit, just have it..
-			blocks: [ 
-				{	type: 'a block with just boots',
-					recMath: false,
-					minSummonerLevel: -1,
-					maxSummmonerLevel: -1,
-					showIfSummonerSpell: '',
-					hideIfSummonerSpell: '',
-					id: '1d11d',
-					items: [
-						{ id: 3001, count: 1 },
-						{ id: 1001, count: 1 }
-					] },
-			{	type: 'another block with just boots',
-					recMath: false,
-					minSummonerLevel: -1,
-					maxSummmonerLevel: -1,
-					showIfSummonerSpell: '',
-					hideIfSummonerSpell: '',
-					id: 'asg2g2',
-					items: [
-						{ id: 1018, count: 2 },
-						{ id: 1001, count: 1 }
-					] }
-			]
-			}
-		};
+		return this._reset();
 	}
 
 	_fetch(id, cb) {
@@ -83,8 +41,7 @@ class ItemSetStore extends DataStore {
 	}
 
 	_reset() {
-		console.log('resettting')
-		this._data = {
+		return {
 			id: 0,
 			loadStatus: '',
 			saveStatus: '',
@@ -106,7 +63,7 @@ class ItemSetStore extends DataStore {
 					maxSummmonerLevel: -1,
 					showIfSummonerSpell: '',
 					hideIfSummonerSpell: '',
-					items: [ { id: 1018, count: 1 },  { id: 1027, count: 1 } ] 
+					items: [ { id: 2003, count: 1 } ] 
 				}
 			]}
 		};
@@ -117,7 +74,7 @@ class ItemSetStore extends DataStore {
 		switch (payload.actionType) {
 			case 'load_data':
 				this._fetch(payload.id, function(resp) {
-					that._reset();
+					that._data = that._reset();
 					if (resp.status === 'ok') {
 						that._data = resp.data;
 					} else {
@@ -193,7 +150,7 @@ class ItemSetStore extends DataStore {
 				this._emitChange(['saveStatus']);
 				break;
 			case 'reset_all':
-				this._reset();
+				this.data = this._reset();
 				this._emitChange(['saveStatus']);
 				break;
 		}
