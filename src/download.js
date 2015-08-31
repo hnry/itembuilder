@@ -38,7 +38,7 @@ class Download extends React.Component {
 			<p>
 				Then copy and paste the below code into the file and save.
 			</p>
-			<textarea className={this.styles.inputJson}>{json}</textarea>
+			<textarea readOnly value={json} className={this.styles.inputJson}></textarea>
 			<hr />
 			<p>
 				After you are done with either method, move the file into the appropriate champion folder where League Of Legends is installed.

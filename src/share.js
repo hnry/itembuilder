@@ -6,6 +6,7 @@ class Share extends React.Component {
 			wrapper: 'popup-wrapper',
 			container: 'popup-container',
 
+			shareContainer: 'share-modal'
 		}
 	}
 
@@ -25,6 +26,12 @@ class Share extends React.Component {
 	}
 
 	render() {
+		// TODO
+		// if using HTML5 fallback (/#/)
+		// this.context.router.makeHref returns #/
+		// so have to prepend a '/' in this case
+		const link = 'http://' + window.location.host + this.context.router.makeHref('view', { id: this.props.id });
+
 		if (!this.props.show) {
 			return null;
 		}
@@ -32,11 +39,26 @@ class Share extends React.Component {
 		return (
 		<div className={this.styles.wrapper} onClick={this.removeShow.bind(this)}>
 			<div className={this.styles.container}>
-				share
+			
+			<div className={this.styles.shareContainer}>
+				<h3 className='xfont-thin'>Share</h3>
+				<hr />
+				Share your item build with others using this link:
+				<br />
+				<input type='text' defaultValue={link} readOnly />
+				<br />
+				<br />
+				Or share it on your social media,
+			</div>
+
 			</div>
 		</div>
 		);
 	}
+}
+
+Share.contextTypes = {
+	router: React.PropTypes.func
 }
 
 export default Share;

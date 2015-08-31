@@ -3,6 +3,7 @@ import ItemBlocks from './itemBlocks';
 import ItemSetUpload from './upload';
 import CreateBlock from './createBlock';
 import MapSelect from './mapSelect';
+import Share from '../../share';
 import Download from '../../download';
 
 var dragula = require('../../dragula/react-dragula');
@@ -89,6 +90,7 @@ class ItemSetWidget extends React.Component {
 		return (
 			<div className={'col-xs-6 col-sm-6 col-md-6' + this.styles.itemSetWrapper}>
 			
+				<Share id={this.state.id} show={this.props.showShare} />
 				<Download show={this.props.showDownload} id={this.state.id} data={this.state.itemset} />
 
 				<ItemSetUpload show={this.state.showFileUpload} />

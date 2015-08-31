@@ -1,7 +1,6 @@
 import ItemDisplayWidget from './itemDisplay/index';
 import ItemSetWidget from './itemSet/index';
 import SaveResult from './saveResult';
-import Share from '../share';
 import Info from '../info';
 
 class Create extends React.Component {
@@ -82,11 +81,10 @@ class Create extends React.Component {
 		return (			
 			<div className='row'>
 				{this.savePopUp()}
-				<Share show={this.state.app.showShare} />
 				<Info show={this.state.app.showInfo} />
 
 				<ItemDisplayWidget items={this.state.items} />
-				<ItemSetWidget apiVersion={this.props.apiVersion}  champion={this.state.champion} showDownload={this.state.app.showDownload} handleChampionSelect={this.onChampionSelect.bind(this)} />
+				<ItemSetWidget apiVersion={this.props.apiVersion}  champion={this.state.champion} showDownload={this.state.app.showDownload} showShare={this.state.app.showShare} handleChampionSelect={this.onChampionSelect.bind(this)} />
 			</div>
 		);
 	}

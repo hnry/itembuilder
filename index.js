@@ -35,6 +35,9 @@ app.set('view engine', 'hjs');
 ///////////////////////////////////////
 
 app.get('/', routes.index);
+app.get('/view', routes.index);
+app.get('/view/:id', routes.index);
+
 // api to create
 app.post('/create/new', routes.apiCreate);
 // api to get itemset data

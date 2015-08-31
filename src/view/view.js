@@ -58,7 +58,7 @@ class View extends React.Component {
 		// if not render something different TODO
 		return (
 			<div className='row'>
-				<Share show={this.state.app.showShare} />
+				<Share id={this.state.id} show={this.state.app.showShare} />
 				<Download show={this.state.app.showDownload} data={this.state.itemset} id={this.state.id} />
 				<Info show={this.state.app.showInfo} />
 

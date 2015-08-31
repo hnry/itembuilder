@@ -32,15 +32,17 @@ class SaveResult extends React.Component {
 	
 	render() {
 		const result = this.props.result;
+		let message = '';
 
 		let glyph = 'glyphicon glyphicon-remove';
 		let color = this.styles.red;
 		if (result.msg === 'ok') {
 			color = this.styles.green;
 			glyph = 'glyphicon glyphicon-ok';
+			message = 'Your Item Build has been saved. Head over to Download to get it on your computer, or Share to show others your amazing build!';
+		} else {
+			message = 'Your Item Build is missing something, (more details to come)';
 		}
-
-		let message = 'TODO write some stuff';
 
 		return (
 			<div className={this.styles.wrapper} onClick={this.removePopup.bind(this, false)}>
