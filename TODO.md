@@ -3,18 +3,15 @@
 	
 	* !! make map selector & send it
 
-	* !! DRAG AND DROP
+	* !! drag and drop needs work
 
-	* filter items by map selected
+	* filter items by map selected?
 
 	* description?
 
-- items.js
-	* !! fix hover
+- !! items.js - fix hover
 
 - !! create view
-
-- !! download
 
 - !! share
 

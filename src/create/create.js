@@ -2,7 +2,6 @@ import ItemDisplayWidget from './itemDisplay/index';
 import ItemSetWidget from './itemSet/index';
 import SaveResult from './saveResult';
 import Share from '../share';
-import Download from '../download';
 import Info from '../info';
 
 class Create extends React.Component {

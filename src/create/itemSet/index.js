@@ -3,6 +3,7 @@ import ItemBlocks from './itemBlocks';
 import ItemSetUpload from './upload';
 import CreateBlock from './createBlock';
 import MapSelect from './mapSelect';
+import Download from '../../download';
 
 var dragula = require('../../dragula/react-dragula');
 
