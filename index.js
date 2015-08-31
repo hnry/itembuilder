@@ -3,6 +3,9 @@ var express = require('express')
   ,	bparser = require('body-parser')
   ,	serveStatic = require('serve-static');
 
+var routes = require('./lib/routes');
+
+app.disable('x-powered-by');
 var compress = require('compression');
 app.use(compress());
 
@@ -10,6 +13,7 @@ app.use(bparser.urlencoded({ extended: false }));
 app.use(bparser.json());
 
 app.use(serveStatic('public_html'));
+app.get('/download/:id.json', routes.download);
 
 var env = process.env.NODE_ENV || 'development';
 if (env === 'development') {
@@ -24,15 +28,11 @@ if (env === 'development') {
   });
 }
 
-app.disable('x-powered-by');
-
 var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
 
 ///////////////////////////////////////
-
-var routes = require('./lib/routes');
 
 app.get('/', routes.index);
 // api to create
