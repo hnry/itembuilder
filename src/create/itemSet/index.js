@@ -23,6 +23,7 @@ class ItemSetWidget extends React.Component {
 		this.state = itemSetStore.getAll();
 
 		this.token = 0;
+		this.tokenId = 0;
 
 		this.dr = dragula({
 			copy: false
@@ -31,6 +32,7 @@ class ItemSetWidget extends React.Component {
 
 	componentDidMount() {
 		this.token = itemSetStore.addListener(this._onChange.bind(this));
+		this.tokenSaveStatus = appStore.addListener('saveStatus', this._onSave.bind(this));
 
 		const that = this;
 		this.dr.containers.push(document.querySelector('#item-display'));
@@ -50,10 +52,20 @@ class ItemSetWidget extends React.Component {
 
 	componentWillUnmount() {
 		itemSetStore.removeListener('', this.token);
+		appStore.removeListener('saveStatus', this.tokenSaveStatus);
+	}
+
+	_onSave() {
+		const saveStatus = appStore.getAll().saveStatus;
+		// check if the save was successful & if it was really a save event
+		if (saveStatus && saveStatus.id && saveStatus.msg === 'ok') {
+			this.context.router.transitionTo('edit', {id: saveStatus.id});
+		}
 	}
 
 	_onChange() {
-		this.setState(itemSetStore.getAll());
+		const data = itemSetStore.getAll();
+		this.setState(data);
 	}
 
 	addDragContainer(el) {
@@ -116,6 +128,10 @@ class ItemSetWidget extends React.Component {
 		);
 	}
 
+}
+
+ItemSetWidget.contextTypes = {
+	router: React.PropTypes.func
 }
 
 export default ItemSetWidget;

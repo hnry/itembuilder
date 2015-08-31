@@ -43,8 +43,6 @@ class ItemSetStore extends DataStore {
 	_reset() {
 		return {
 			id: 0,
-			loadStatus: '',
-			saveStatus: '',
 			showFileUpload: 1,
 			champion: {},
 			description: '',
@@ -77,10 +75,10 @@ class ItemSetStore extends DataStore {
 					that._data = that._reset();
 					if (resp.status === 'ok') {
 						that._data = resp.data;
+						that._emitChange(['id']);
 					} else {
-						that._data.loadStatus = resp.status;
+						//that._data.loadStatus = resp.status;
 					}
-					that._emitChange(['saveStatus']);
 				});
 				break;
 			case 'champion_update':
@@ -135,22 +133,19 @@ class ItemSetStore extends DataStore {
 					this._save(function(id, status) {
 						if (status === 'ok') {
 							that._data.id = id;
+							that._emitChange(['id']);
 						}
-						that._data.saveStatus = { origin: 'server', msg: status };
-						that._emitChange(['saveStatus']);
+						const payload = { id: id, origin: 'server', msg: status };
+						appDispatcher.dispatch(APP_ACTIONS.show_save_status(payload));
 					});
 				} else {
-					this._data.saveStatus = { origin: 'app', msg: validation.reason };
-					this._emitChange(['saveStatus']);
+						const payload = { origin: 'app', msg: validation.reason }
+						appDispatcher.dispatch(APP_ACTIONS.show_save_status(payload));
 				}
-				break;
-			case 'got_save_status':
-				this._data.saveStatus = '';
-				this._emitChange(['saveStatus']);
 				break;
 			case 'reset_all':
 				this._data = this._reset();
-				this._emitChange(['saveStatus']);
+				this._emitChange(['id']);
 				break;
 		}
 	}

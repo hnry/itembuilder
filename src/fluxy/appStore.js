@@ -15,7 +15,8 @@ class AppStore extends DataStore {
 		return {
 			showShare: 0,
 			showDownload: 0,
-			showInfo: 0
+			showInfo: 0,
+			saveStatus: ''
 		}
 	}
 
@@ -37,6 +38,14 @@ class AppStore extends DataStore {
 			case 'app_hide_popup':
 				this._data = this._reset();
 				this._emitChange();
+				break;
+			case 'show_save_status':
+				this._data.saveStatus = payload.status;
+				this._emitChange(['saveStatus']);
+				break;
+			case 'got_save_status':
+				this._data.saveStatus = '';
+				this._emitChange(['saveStatus']);
 				break;
 		}
 	}

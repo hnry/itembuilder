@@ -20,7 +20,7 @@ class Create extends React.Component {
 		this.state.app = appStore.getAll();
 
 		this.tokenChampion = 0;
-		this.tokenSaveStatus = 0;
+		this.tokenItemSet = 0;
 		this.tokenItemStore = 0;
 		this.tokenAppStore = 0;
 	}
@@ -28,7 +28,7 @@ class Create extends React.Component {
 	static willTransitionTo(transition, context) {
 		if (transition.path.indexOf('/edit/') === 0) {
 			appDispatcher.dispatch(APP_ACTIONS.load_data(context.id));
-		} else if (transition.path.indexOf('/create') === 0) {
+		} else if (transition.path.indexOf('/create') === 0 || transition.path == '/') {
 			appDispatcher.dispatch(APP_ACTIONS.reset_all());
 		}
 	}
@@ -42,7 +42,7 @@ class Create extends React.Component {
 
 
 		this.tokenChampion = itemSetStore.addListener('champion', this._onChange.bind(this));
-		this.tokenSaveStatus = itemSetStore.addListener('saveStatus', this._onChange.bind(this));
+		this.tokenItemSet = itemSetStore.addListener('id', this._onChange.bind(this));
 
 
 		this.tokenAppStore = appStore.addListener(this._onAppChange.bind(this));
@@ -51,7 +51,7 @@ class Create extends React.Component {
 	componentWillUnmount() {
 		ItemStore.unnotify(this.tokenItemStore);
 		itemSetStore.removeListener('champion', this.tokenChampion);
-		itemSetStore.removeListener('saveStatus', this.tokenSaveStatus);
+		itemSetStore.removeListener('id', this.tokenItemSet);
 		appStore.removeListener('', this.tokenAppStore);
 	}
 
@@ -69,18 +69,10 @@ class Create extends React.Component {
 		appDispatcher.dispatch(APP_ACTIONS.champion_update(championObj));
 	}
 
-	savePopUp() {
-		if (this.state.saveStatus) {
-			return (
-				<SaveResult result={this.state.saveStatus} />
-			);
-		}
-	}
-
 	render() {
 		return (			
 			<div className='row'>
-				{this.savePopUp()}
+				<SaveResult result={this.state.app.saveStatus} />
 				<Info show={this.state.app.showInfo} />
 
 				<ItemDisplayWidget items={this.state.items} />

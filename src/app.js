@@ -24,7 +24,7 @@ var App = React.createClass({
 
 	componentDidMount: function() {
 		// gets alerted on every save attempt, even for fail saves
-		itemSetStore.addListener('saveStatus', this._onChange);
+		itemSetStore.addListener('id', this._onChange);
 	},
 
 	_onChange: function() {
@@ -36,6 +36,7 @@ var App = React.createClass({
 
 	_onNavSave: function(e) {
 		appDispatcher.dispatch(APP_ACTIONS.save_itemset());
+		return false;
 	},
 
 	_onNavDownload: function(e) {

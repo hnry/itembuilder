@@ -45,11 +45,6 @@ var APP_ACTIONS = {
 			actionType: 'save_itemset'
 		}
 	},
-	got_save_status: function() {
-		return {
-			actionType: 'got_save_status'
-		}
-	},
 	upload_itemset: function(jsonData) {
 		return {
 			actionType: 'upload_itemset',
@@ -90,5 +85,16 @@ var APP_ACTIONS = {
 		return {
 			actionType: 'app_hide_popup'
 		}
-	}
+	},
+	show_save_status: function(statusObj) {
+		return {
+			actionType: 'show_save_status',
+			status: statusObj
+		}
+	},
+	got_save_status: function() {
+		return {
+			actionType: 'got_save_status'
+		}
+	},
 }

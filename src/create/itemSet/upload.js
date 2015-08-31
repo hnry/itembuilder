@@ -66,7 +66,7 @@ class ItemSetUpload extends React.Component {
 		  	that.validateParsed(parsed);
 		  }
 		  const el = React.findDOMNode(that.refs.inputElem);
-		  el.value = '';
+		  if (el) el.value = '';
     }
   	reader.readAsText(file);
   }

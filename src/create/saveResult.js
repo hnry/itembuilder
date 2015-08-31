@@ -31,6 +31,10 @@ class SaveResult extends React.Component {
 	}
 	
 	render() {
+		if (!this.props.result) {
+			return null;
+		}
+
 		const result = this.props.result;
 		let message = '';
 
