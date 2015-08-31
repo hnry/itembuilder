@@ -1,4 +1,7 @@
+import ViewBuild from './viewBuild';
+import ViewDisplay from './viewDisplay';
 import ItemButton from '../itemButton';
+
 import Share from '../share';
 import Download from '../download';
 import Info from '../info';
@@ -41,39 +44,24 @@ class View extends React.Component {
 		this.setState({ app: data });
 	}
 
-	renderBlocks() {
-		return this.state.itemset.blocks.map((block, idx) => {
-			return (
-				<div className='row' key={idx}>
-					{block.type}
-
-
-				</div>
-			);
-		});
-	}
-
 	render() {
 		// have to check if resource exists 
 		// if not render something different TODO
 		return (
 			<div className='row'>
+
 				<Share id={this.state.id} show={this.state.app.showShare} />
 				<Download show={this.state.app.showDownload} data={this.state.itemset} id={this.state.id} />
 				<Info show={this.state.app.showInfo} />
 
+
 				<div className='col-xs-5 col-sm-5 col-md-5'>
-					{this.renderBlocks()}
+					<ViewDisplay itemset={this.state.itemset} />
 				</div>
 				<div className='col-xs-5 col-sm-5 col-md-5'>
-					{this.state.itemset.title}
-					<br />
-					{this.state.champion.name}
-					<br />
-					champion pic
-					<br />
-					map info
+					<ViewBuild apiVersion={this.props.apiVersion} data={this.state} />
 				</div>
+
 			</div>
 		);
 	}
