@@ -53,7 +53,7 @@ class ItemCategories extends React.Component {
 			const subCategories = this.props.categories[key];
 			return (
 				<div key={key} className={this.styles.parentCategory}>
-					<span className={this.styles.parentCategoryTitle}><a href='#' onClick={this.handleCategory.bind(this, key)}>{key}</a></span>
+					<span className={this.styles.parentCategoryTitle} onClick={this.handleCategory.bind(this, key)}>{key}</span>
 					{this.renderSubCategories(subCategories, key)}
 				</div>
 			); 

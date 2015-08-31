@@ -159,10 +159,10 @@ class ItemDisplayWidget extends React.Component {
 				</div>
 
 				<div className='row'>
-					<div className='col-xs-6 col-sm-6 col-md-6'>
+					<div className='col-xs-7 col-sm-7 col-md-7'>
 						<ItemCategories categories={this.state.categories} onCategoryCheck={this.changeCategories.bind(this)} />
 					</div>
-					<div className='col-xs-6 col-sm-6 col-md-6'>
+					<div className='col-xs-5 col-sm-5 col-md-5'>
 						<ItemDisplay items={this.getItems()} />
 					</div>
 				</div>

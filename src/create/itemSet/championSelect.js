@@ -9,6 +9,9 @@ class ChampionSelect extends React.Component {
 			championDropDownWrap: 'item-champion-dropdown-wrap',
 			championDropDown: 'item-champion-dropdown',
 			hide: 'hidden',
+			imageChampion: 'item-champion-image',
+			// wrapper, could be name or input box
+			championName: 'item-champion-name-wrap xfont'
 		};
 
 		this.state = {
@@ -112,10 +115,13 @@ class ChampionSelect extends React.Component {
 
 	render() {
 		let imageUrl = 'http://ddragon.leagueoflegends.com/cdn/' + this.props.apiVersion + '/img/champion/' + this.props.champion.riotKey + '.png';
+		let imageChampion = this.styles.imageChampion;
+
 		let renderPickerOrChampion = (<h2>{this.props.champion.name}</h2>);
 
 		if (!this.props.champion.riotId) {
 			imageUrl = 'http://ddragon.leagueoflegends.com/cdn/5.2.1/img/ui/champion.png';
+			imageChampion = 'default-champion'
 			// render the champion picker
 			renderPickerOrChampion = (
 					<div onBlur={this.onDropDown.bind(this, false)}>
@@ -127,8 +133,10 @@ class ChampionSelect extends React.Component {
 
 		return (
 			<div className='row'>
-				<img src={imageUrl} />
+				<img className={imageChampion} src={imageUrl} />
+				<div className={this.styles.championName}>
 				{renderPickerOrChampion}
+				</div>
 			</div>
 		);
 	}

@@ -1,5 +1,6 @@
 @errorred: #CD5C5C;
 @lightgray: #D3D3D3;
+@steelblue: #B0C4DE; // 176 196 222
 
 html {
 }
@@ -127,6 +128,8 @@ body {
 
 .category-title {
   font-size: 1.5em;
+  color: darken(@steelblue, 25%);
+  cursor: pointer;
   background-color: #FFFACD;
 }
 
@@ -252,6 +255,37 @@ body {
   font-size: 0.8em;
 }
 
+//////// itemSet/championSelect.js
+.default-champion {
+  display: inline;
+  max-width: 50px;
+  min-width: 50px;
+  margin: 20px;
+  border-radius: 25px;
+  float: left;
+}
+
+.item-champion-image {
+  display: inline;
+  max-width: 100px;
+  min-width: 100px;
+  border-radius: 25px;
+  float: left;
+}
+.item-champion-name-wrap {
+  float: left;
+  display: inline;
+  padding-left: 25px;
+  padding-top: 10px;
+}
+
+.item-champion-name-wrap input {
+  margin-top: 25px;
+  min-width: 200px;
+  width: 70%;
+}
+
+
 // pop up used by saveResult, download, share
 .popup-wrapper {
   background-color: rgba(0,0,0, 0.5);
@@ -323,10 +357,10 @@ body {
 }
 ////////
 
-@steelblue: #B0C4DE; // 176 196 222
 //////// view.js 
 //////// viewDisplay.js
 .view-display {
+  // @steelblue color
   background-color: rgba(176, 196, 222, 0.4);
   border-radius: 3px;
 }
