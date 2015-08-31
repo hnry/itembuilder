@@ -14,10 +14,11 @@ class Info extends React.Component {
 			appDispatcher.dispatch(APP_ACTIONS.app_hide_popup());
 		}
 
-		if (buttonClick) {
+		if (buttonClick.target) event = buttonClick;
+		if (buttonClick === true) {
 			remove();			
 		} else {
-			if (event.target.className === this.styles.wrapper) {
+			if (event.target && event.target.className === this.styles.wrapper) {
 				remove();
 			}
 		}
@@ -38,7 +39,7 @@ class Info extends React.Component {
 						This project is an open source project, you can view the code on <a href='http://github.com/hnry/itembuilder' target='_blank'>GitHub</a>
 					</p>
 					<p>
-						It was created as part of the Riot 2.0 challenge.
+						It was created as part of the Riot 2.0 API challenge.
 					</p>
 				</div>
 

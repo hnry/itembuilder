@@ -14,10 +14,11 @@ class Share extends React.Component {
 			appDispatcher.dispatch(APP_ACTIONS.app_hide_popup());
 		}
 
-		if (buttonClick) {
+		if (buttonClick.target) event = buttonClick;
+		if (buttonClick === true) {
 			remove();			
 		} else {
-			if (event.target.className === this.styles.wrapper) {
+			if (event.target && event.target.className === this.styles.wrapper) {
 				remove();
 			}
 		}

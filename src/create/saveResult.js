@@ -20,10 +20,11 @@ class SaveResult extends React.Component {
 			appDispatcher.dispatch(APP_ACTIONS.got_save_status());
 		}
 
-		if (buttonClick) {
+		if (buttonClick.target) event = buttonClick;
+		if (buttonClick === true) {
 			remove();			
 		} else {
-			if (event.target.className === this.styles.wrapper) {
+			if (event.target && event.target.className === this.styles.wrapper) {
 				remove();
 			}
 		}

@@ -87,7 +87,9 @@ class ItemSetWidget extends React.Component {
 	render() {
 		return (
 			<div className={'col-xs-6 col-sm-6 col-md-6' + this.styles.itemSetWrapper}>
-				
+			
+				<Download show={this.props.showDownload} id={this.state.id} data={this.state.itemset} />
+
 				<ItemSetUpload show={this.state.showFileUpload} />
 
 				<br />

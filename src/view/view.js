@@ -59,7 +59,7 @@ class View extends React.Component {
 		return (
 			<div className='row'>
 				<Share show={this.state.app.showShare} />
-				<Download show={this.state.app.showDownload} />
+				<Download show={this.state.app.showDownload} data={this.state.itemset} id={this.state.id} />
 				<Info show={this.state.app.showInfo} />
 
 				<div className='col-xs-5 col-sm-5 col-md-5'>

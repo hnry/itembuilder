@@ -84,11 +84,10 @@ class Create extends React.Component {
 			<div className='row'>
 				{this.savePopUp()}
 				<Share show={this.state.app.showShare} />
-				<Download show={this.state.app.showDownload} />
 				<Info show={this.state.app.showInfo} />
 
 				<ItemDisplayWidget items={this.state.items} />
-				<ItemSetWidget apiVersion={this.props.apiVersion}  champion={this.state.champion} handleChampionSelect={this.onChampionSelect.bind(this)} />
+				<ItemSetWidget apiVersion={this.props.apiVersion}  champion={this.state.champion} showDownload={this.state.app.showDownload} handleChampionSelect={this.onChampionSelect.bind(this)} />
 			</div>
 		);
 	}
