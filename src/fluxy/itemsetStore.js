@@ -149,7 +149,7 @@ class ItemSetStore extends DataStore {
 				this._emitChange(['saveStatus']);
 				break;
 			case 'reset_all':
-				this.data = this._reset();
+				this._data = this._reset();
 				this._emitChange(['saveStatus']);
 				break;
 		}

@@ -25,6 +25,14 @@ class Create extends React.Component {
 		this.tokenAppStore = 0;
 	}
 
+	static willTransitionTo(transition, context) {
+		if (transition.path.indexOf('/edit/') === 0) {
+			appDispatcher.dispatch(APP_ACTIONS.load_data(context.id));
+		} else if (transition.path.indexOf('/create') === 0) {
+			appDispatcher.dispatch(APP_ACTIONS.reset_all());
+		}
+	}
+
 	componentDidMount() {
 		const that = this;
 
@@ -38,14 +46,6 @@ class Create extends React.Component {
 
 
 		this.tokenAppStore = appStore.addListener(this._onAppChange.bind(this));
-
-		// if we don't get an ID, we reset the item set store state
-		// if we get an ID it means it's /edit which the store needs to load
-		if (this.props.params && this.props.params.id) {
-			appDispatcher.dispatch(APP_ACTIONS.load_data(this.props.params.id));
-		} else {
-			appDispatcher.dispatch(APP_ACTIONS.reset_all());
-		}
 	}
 
 	componentWillUnmount() {
