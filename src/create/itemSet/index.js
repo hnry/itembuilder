@@ -66,18 +66,17 @@ class ItemSetWidget extends React.Component {
 		appDispatcher.dispatch(APP_ACTIONS.update_itemset_block_type(blockIdx, txt));
 	}
 
-	onCreateBlock(items) {
-		items = items || []
-		//var randomId = Math.floor(Math.random() * 1000000);
+	onCreateBlock(items, event) {
+		var i = [];
+		if (!event) i = items;
 		appDispatcher.dispatch(APP_ACTIONS.create_itemset_block({
-			//id: randomId,
 			type: '',
 			recMath: false,
 			minSummonerLevel: -1,
 			maxSummmonerLevel: -1,
 			showIfSummonerSpell: '',
 			hideIfSummonerSpell: '',
-			items: items
+			items: i
 		}));
 	}
 
