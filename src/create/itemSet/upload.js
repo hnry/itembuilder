@@ -94,6 +94,7 @@ class ItemSetUpload extends React.Component {
 
 		return (
 			<div>
+			<small>Import an existing Item Set</small>
 			<form onSubmit={this.handleSubmit} encType="multipart/form-data">
 				<input ref='inputElem' type='file' accept='.json' onChange={this.handleUpload} />
 			</form>
