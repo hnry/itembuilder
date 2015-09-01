@@ -80,6 +80,10 @@ class ItemSetWidget extends React.Component {
 		appDispatcher.dispatch(APP_ACTIONS.update_itemset_block_type(blockIdx, txt));
 	}
 
+	changeMap(mapkey) {
+		appDispatcher.dispatch(APP_ACTIONS.select_map(mapkey));
+	}
+
 	onCreateBlock(items, event) {
 		var i = [];
 		if (!event) i = items;
@@ -111,8 +115,8 @@ class ItemSetWidget extends React.Component {
 
 				<ChampionSelect handleChampionSelect={this.props.handleChampionSelect} apiVersion={this.props.apiVersion} champion={this.props.champion} />
 
-
-				<MapSelect />
+				<br />
+				<MapSelect map={this.state.itemset.map} handleChange={this.changeMap.bind(this)} />
 
 				<br />
 				<div className='row'>

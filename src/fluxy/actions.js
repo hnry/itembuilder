@@ -25,6 +25,12 @@ var APP_ACTIONS = {
 			itemID: id
 		}
 	},
+	select_map: function(mapkey) {
+		return {
+			actionType: 'select_map',
+			map: mapkey
+		}
+	},
 	remove_itemset_item: function() {
 
 	},

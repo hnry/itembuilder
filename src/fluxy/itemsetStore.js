@@ -90,6 +90,9 @@ class ItemSetStore extends DataStore {
 				this._data.itemset = payload.data;
 				this._emitChange();
 				break;
+			case 'select_map':
+				this._data.itemset.map = payload.map;
+				break;
 			case 'update_itemset_title':
 				this._data.itemset.title = payload.text;
 				this._emitChange();
