@@ -49,6 +49,24 @@ class ItemSetWidget extends React.Component {
 				]);
 			}
 		});
+
+		// a visual aid for drag and drop to help users know
+		// where they can actually drop
+		this.dr.on('drag', function(el, src) {
+			this.containers.forEach(element => {
+				if (element.id != 'item-display') {
+					element.className = element.className + ' dragging';
+				}
+			});
+		});
+		// clear the visual aid when the drag is canceled or dropped
+		this.dr.on('dragend', function(el) {
+			this.containers.forEach(element => {
+				if (element.id != 'item-display') {
+					element.className = element.className.replace('dragging', '').trim();
+				}
+			})
+		});
 	}
 
 	componentWillUnmount() {

@@ -1,6 +1,7 @@
 @errorred: #CD5C5C;
 @lightgray: #D3D3D3;
 @steelblue: #B0C4DE; // 176 196 222
+@pink: #FFF0F5;
 
 html {
 }
@@ -193,7 +194,7 @@ body {
 }
 
 .item-block {
-  //background-color: #FFF0F5;
+  // pink
   background-color: rgba(255, 240, 245, 0.6);
   margin-bottom: 10px;
   padding: 10px;
@@ -399,6 +400,15 @@ body {
 
 .drag-container {
   min-height: 20px;
+}
+
+.dragging {
+  background-color: @pink
+ !important;
+  -webkit-transition: background-color 1s ease-in-out;
+  -moz-transition: background-color 1s ease-in-out;
+  -o-transition: background-color 1s ease-in-out;
+  transition: background-color 1s ease-in-out;
 }
 
 // dragula css
