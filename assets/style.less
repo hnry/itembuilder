@@ -255,6 +255,10 @@ body {
   font-size: 0.8em;
 }
 
+.item-pop img {
+  border: 0 !important;
+}
+
 //////// itemSet/championSelect.js
 .default-champion {
   display: inline;
@@ -361,13 +365,26 @@ body {
 //////// viewDisplay.js
 .view-display {
   // @steelblue color
-  background-color: rgba(176, 196, 222, 0.4);
+  //background-color: rgba(176, 196, 222, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 3px;
 }
-.view-display-block-title {
-  color: darken(@steelblue, 40%);
+.view-display-block{
+  margin: 20px 5px 20px 5px;
 }
-
+.view-display-block-title {
+  color: lighten(@steelblue, 1%);
+  border-bottom: 1px lighten(#000, 10%) solid;
+  padding-bottom: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.view-display-block-title span {
+  margin-left: 5px;
+}
+.view-display-count {
+  margin-left: 34px;
+}
 .view-display img {
   max-width: 50px;
   border: 2px #FAFAD2 solid;

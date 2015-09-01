@@ -7,9 +7,10 @@ class ViewDisplay extends React.Component {
 
 		this.styles = {
 			wrapper: 'view-display',
+			block: 'view-display-block',
 			blockTitle: 'view-display-block-title xfont',
 			itemButton: 'item-set-button-block',
-			itemCount: 'item-set-button-block-count',
+			itemCount: 'item-set-button-block-count view-display-count',
 		}
 	}
 
@@ -29,8 +30,8 @@ class ViewDisplay extends React.Component {
 	renderBlocks() {
 		return this.props.itemset.blocks.map((block, idx) => {
 			return (
-				<div key={idx}>
-					<span className={this.styles.blockTitle}>-- {block.type}</span>
+				<div key={idx} className={this.styles.block}>
+					<div className={'row ' + this.styles.blockTitle}><span>{block.type}</span></div>
 
 					<div className='row'>
 						{this.renderBlockItems(block.items)}
