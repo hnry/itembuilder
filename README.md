@@ -1,6 +1,6 @@
 # Item Build builder 
 
-This for the Riot API 2.0 Challenge (League of Legends). 
+This is for the Riot API 2.0 Challenge (League of Legends). 
 
 I chose the item set category. I went into it with 2 design goals:
 - Item Sets are really In Game Item Builds
@@ -8,7 +8,9 @@ I chose the item set category. I went into it with 2 design goals:
 
 Unfortunately I discovered this challenge when it was already under way, so time was a limiting factor. I ended up stripping things and focusing more on what I needed to have a running demo.
 
-The demo is running [here](http://league-asdf12.rhcloud.com/#/).
+The demo is running [here](http://league-asdf12.rhcloud.com/).
+
+While an example of a item build is [here, Zed's best build ;)](http://league-asdf12.rhcloud.com/view/0fe96b79-46cd-45a8-ae95-90ad8fdfbae5)
 
 #### Item Sets as Item Builds
 I wanted to turn Item Sets more into this idea of Item Builds, that is that they can become in game guides. I find when I am playing I will tab out often to look up a guide or item build. 
