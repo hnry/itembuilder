@@ -25,10 +25,21 @@ class ItemBlock extends React.Component {
 		this.props.handleRemoveBlock(idx);
 	}
 
+	onRemoveItem(rmItem, event) {
+		event.preventDefault();
+		this.props.handleItemRemove(rmItem);
+	}
+
 	renderItems(items) {
 		return items.map((item, idx) => {
+			// for item remove
+			const rmItem = { 
+				blockIdx: this.props.idx,
+				itemIdx: idx,
+				itemId: item.id
+			}
 			return (
-				<div key={item.id + '-' + idx} className={this.styles.item_icon_block}>
+				<div onContextMenu={this.onRemoveItem.bind(this, rmItem)} key={item.id + '-' + idx} className={this.styles.item_icon_block}>
 					<ItemButton itemId={item.id} />
 					<span className={this.styles.item_icon_count}>{item.count}</span>
 				</div>

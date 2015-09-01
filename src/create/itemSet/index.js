@@ -37,6 +37,7 @@ class ItemSetWidget extends React.Component {
 		const that = this;
 		this.dr.containers.push(document.querySelector('#item-display'));
 
+		// where items get added
 		this.dr.on('drop', function(el, target, src) {
 			const id = el.getAttribute('data-item-id');
 			const idx = target.getAttribute('data-block-idx');
@@ -102,6 +103,10 @@ class ItemSetWidget extends React.Component {
 		appDispatcher.dispatch(APP_ACTIONS.delete_itemset_block(idx));
 	}
 	
+	onRemoveItem(rmItem) {
+		appDispatcher.dispatch(APP_ACTIONS.delete_item_from_block(rmItem));
+	}
+
 	render() {
 		return (
 			<div className={'col-xs-6 col-sm-6 col-md-6' + this.styles.itemSetWrapper}>
@@ -124,7 +129,7 @@ class ItemSetWidget extends React.Component {
 				</div>
 				<br />
 
-				<ItemBlocks addDrag={this.addDragContainer.bind(this)} blocks={this.state.itemset.blocks} handleBlockType={this.changeType.bind(this)} handleRemoveBlock={this.onRemoveBlock.bind(this)} />
+				<ItemBlocks addDrag={this.addDragContainer.bind(this)} blocks={this.state.itemset.blocks} handleBlockType={this.changeType.bind(this)} handleRemoveBlock={this.onRemoveBlock.bind(this)} handleItemRemove={this.onRemoveItem.bind(this)} />
 
 				<CreateBlock addDrag={this.addDragContainer.bind(this)} handlerCreate={this.onCreateBlock.bind(this)} />
 

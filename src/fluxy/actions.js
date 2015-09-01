@@ -31,8 +31,11 @@ var APP_ACTIONS = {
 			map: mapkey
 		}
 	},
-	remove_itemset_item: function() {
-
+	delete_item_from_block: function(rmItem) {
+		return {
+			actionType: 'delete_item_from_block',
+			item: rmItem
+		}
 	},
 	create_itemset_block: function(initBlock) {
 		return {

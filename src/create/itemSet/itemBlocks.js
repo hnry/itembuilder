@@ -9,7 +9,7 @@ class ItemBlocks extends React.Component {
 	render() {
 		const renderBlocks = this.props.blocks.map((block, idx) => {
 			return (
-				<ItemBlock key={block.id + '-' + idx} block={block} idx={idx} addDrag={this.props.addDrag} handleBlockType={this.props.handleBlockType} handleRemoveBlock={this.props.handleRemoveBlock} />
+				<ItemBlock key={block.id + '-' + idx} block={block} idx={idx} addDrag={this.props.addDrag} handleBlockType={this.props.handleBlockType} handleRemoveBlock={this.props.handleRemoveBlock} handleItemRemove={this.props.handleItemRemove} />
 			);
 		});
 

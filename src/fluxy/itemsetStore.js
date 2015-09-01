@@ -109,6 +109,16 @@ class ItemSetStore extends DataStore {
 				});
 				this._emitChange();
 				break;
+			case 'delete_item_from_block':
+				const item = this._data.itemset.blocks[payload.item.blockIdx].items[payload.item.itemIdx];
+				if (item.id == payload.item.itemId) {
+					item.count -= 1;
+					if (item.count <= 0) {
+						this._data.itemset.blocks[payload.item.blockIdx].items.splice(payload.item.itemIdx, 1);
+					}
+					this._emitChange();
+				}
+				break;
 			case 'create_itemset_block':
 				this._data.itemset.blocks.push(payload.blockObj);
 				this._emitChange();
